@@ -3,8 +3,10 @@ package de.kitt3120.bluesystem;
 import de.kitt3120.bluesystem.commands.RemoveName;
 import de.kitt3120.bluesystem.commands.SetPrefix;
 import de.kitt3120.bluesystem.commands.SetSuffix;
+import de.kitt3120.bluesystem.commands.Sit;
 import de.kitt3120.bluesystem.listeners.*;
 import de.kitt3120.bluesystem.manage.FileManager;
+import de.kitt3120.bluesystem.manage.SeatManager;
 import de.kitt3120.bluesystem.misc.HunkaKittLoveParticles;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,6 +18,7 @@ public class Core extends JavaPlugin {
     private static Core instance;
 
     private FileManager fileManager;
+    private SeatManager seatManager;
 
     public static Core getInstance() {
         return instance;
@@ -31,6 +34,7 @@ public class Core extends JavaPlugin {
         //Managers
         getLogger().info("Registering Managers...");
         fileManager = new FileManager();
+        seatManager = new SeatManager();
 
         //Listeners
         getLogger().info("Registering Listeners...");
@@ -42,7 +46,6 @@ public class Core extends JavaPlugin {
         new JoinNameFixer();
         new BlockLogger();
         new ExplosionLogger();
-        new SeatClickListener();
 
         //Misc
         getLogger().info("Registering Miscs...");
@@ -53,6 +56,7 @@ public class Core extends JavaPlugin {
         new SetPrefix();
         new SetSuffix();
         new RemoveName();
+        new Sit();
 
         millis = System.currentTimeMillis() - millis;
         getLogger().info("----------\nDone loading in " + millis + "ms");
@@ -60,5 +64,9 @@ public class Core extends JavaPlugin {
 
     public FileManager getFileManager() {
         return fileManager;
+    }
+
+    public SeatManager getSeatManager() {
+        return seatManager;
     }
 }
