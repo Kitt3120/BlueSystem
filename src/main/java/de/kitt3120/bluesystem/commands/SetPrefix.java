@@ -1,7 +1,7 @@
 package de.kitt3120.bluesystem.commands;
 
 import de.kitt3120.bluesystem.Core;
-import de.kitt3120.bluesystem.misc.PlayerNameChanger;
+import de.kitt3120.bluesystem.manage.PlayerNameChanger;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

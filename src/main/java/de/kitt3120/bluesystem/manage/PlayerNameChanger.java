@@ -1,4 +1,4 @@
-package de.kitt3120.bluesystem.misc;
+package de.kitt3120.bluesystem.manage;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;

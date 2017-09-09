@@ -1,12 +1,10 @@
 package de.kitt3120.bluesystem;
 
-import de.kitt3120.bluesystem.commands.RemoveName;
-import de.kitt3120.bluesystem.commands.SetPrefix;
-import de.kitt3120.bluesystem.commands.SetSuffix;
-import de.kitt3120.bluesystem.commands.Sit;
+import de.kitt3120.bluesystem.commands.*;
 import de.kitt3120.bluesystem.listeners.*;
 import de.kitt3120.bluesystem.manage.FileManager;
 import de.kitt3120.bluesystem.manage.SeatManager;
+import de.kitt3120.bluesystem.misc.HotbarPing;
 import de.kitt3120.bluesystem.misc.HunkaKittLoveParticles;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -50,6 +48,7 @@ public class Core extends JavaPlugin {
         //Misc
         getLogger().info("Registering Miscs...");
         new HunkaKittLoveParticles();
+        HotbarPing.start();
 
         //Commands
         getLogger().info("Registering Commands...");
@@ -57,6 +56,7 @@ public class Core extends JavaPlugin {
         new SetSuffix();
         new RemoveName();
         new Sit();
+        new Timber();
 
         millis = System.currentTimeMillis() - millis;
         getLogger().info("----------\nDone loading in " + millis + "ms");

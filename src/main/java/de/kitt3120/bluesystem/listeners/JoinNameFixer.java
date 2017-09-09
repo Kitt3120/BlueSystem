@@ -1,7 +1,7 @@
 package de.kitt3120.bluesystem.listeners;
 
 import de.kitt3120.bluesystem.Core;
-import de.kitt3120.bluesystem.misc.PlayerNameChanger;
+import de.kitt3120.bluesystem.manage.PlayerNameChanger;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;

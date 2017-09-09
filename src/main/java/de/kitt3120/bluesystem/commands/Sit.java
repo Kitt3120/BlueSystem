@@ -20,14 +20,13 @@ public class Sit implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage("Ja genau, als ob du dich irgendwo hinsetzen könntest :D");
-            return true;
-        }
-
         Player player = (Player) commandSender;
 
         if (command.getName().equalsIgnoreCase("Sit")) {
+            if (!(commandSender instanceof Player)) {
+                commandSender.sendMessage("Ja genau, als ob du dich irgendwo hinsetzen könntest :D");
+                return true;
+            }
             if (!Core.getInstance().getSeatManager().isSitting(player)) {
                 Block lookAt = player.getTargetBlock(null, 2);
                 if (!lookAt.getType().equals(Material.AIR)) {

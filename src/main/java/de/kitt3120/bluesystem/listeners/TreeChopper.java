@@ -2,6 +2,7 @@ package de.kitt3120.bluesystem.listeners;
 
 import de.kitt3120.bluesystem.Core;
 import de.kitt3120.bluesystem.ParticleUtils;
+import de.kitt3120.bluesystem.manage.TimberManager;
 import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.block.Block;
@@ -26,7 +27,8 @@ public class TreeChopper implements Listener {
     public void onBlockBreak(BlockBreakEvent event) {
         Block block = event.getBlock();
         ItemStack usedItem = event.getPlayer().getInventory().getItemInMainHand();
-        if(isLog(block) && isAxe(usedItem)) dropTree(event.getBlock(), event.getPlayer());
+        if (TimberManager.hasEnabled(event.getPlayer()) && isLog(block) && isAxe(usedItem))
+            dropTree(event.getBlock(), event.getPlayer());
     }
 
     private void dropTree(final Block block, final Player breaker) {
