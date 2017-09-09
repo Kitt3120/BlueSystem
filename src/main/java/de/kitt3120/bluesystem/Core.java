@@ -17,6 +17,10 @@ public class Core extends JavaPlugin {
 
     private FileManager fileManager;
 
+    public static Core getInstance() {
+        return instance;
+    }
+
     @Override
     public void onEnable() {
         instance = this;
@@ -38,6 +42,7 @@ public class Core extends JavaPlugin {
         new JoinNameFixer();
         new BlockLogger();
         new ExplosionLogger();
+        new SeatClickListener();
 
         //Misc
         getLogger().info("Registering Miscs...");
@@ -51,10 +56,6 @@ public class Core extends JavaPlugin {
 
         millis = System.currentTimeMillis() - millis;
         getLogger().info("----------\nDone loading in " + millis + "ms");
-    }
-
-    public static Core getInstance() {
-        return instance;
     }
 
     public FileManager getFileManager() {

@@ -140,7 +140,7 @@
     <jar destfile="${temp.jar.path.BlueSystem.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
       <zipfileset dir="${bluesystem.output.dir}"/>
       <zipfileset file="${basedir}/BlueSystem.iml"/>
-      <zipfileset file="${basedir}/plugin.yml"/>
+      <zipfileset file="/src/resources/plugin.yml"/>
     </jar>
     <copy file="${temp.jar.path.BlueSystem.jar}" tofile="${artifact.temp.output.bluesystem}/BlueSystem.jar"/>
   </target>
