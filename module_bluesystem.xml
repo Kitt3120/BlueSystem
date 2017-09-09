@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_bluesystem" default="compile.module.bluesystem">
+  <dirname property="module.bluesystem.basedir" file="${ant.file.module_bluesystem}"/>
+  
+  <property name="module.jdk.home.bluesystem" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.bluesystem" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.bluesystem" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.bluesystem" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="bluesystem.output.dir" value="${module.bluesystem.basedir}/out/production/BlueSystem"/>
+  <property name="bluesystem.testoutput.dir" value="${module.bluesystem.basedir}/out/test/BlueSystem"/>
+  
+  <path id="bluesystem.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="bluesystem.module.production.classpath">
+    <path refid="${module.jdk.classpath.bluesystem}"/>
+    <path refid="library.spigot-1.12.1.classpath"/>
+  </path>
+  
+  <path id="bluesystem.runtime.production.module.classpath">
+    <pathelement location="${bluesystem.output.dir}"/>
+    <path refid="library.spigot-1.12.1.classpath"/>
+  </path>
+  
+  <path id="bluesystem.module.classpath">
+    <path refid="${module.jdk.classpath.bluesystem}"/>
+    <pathelement location="${bluesystem.output.dir}"/>
+    <path refid="library.spigot-1.12.1.classpath"/>
+  </path>
+  
+  <path id="bluesystem.runtime.module.classpath">
+    <pathelement location="${bluesystem.testoutput.dir}"/>
+    <pathelement location="${bluesystem.output.dir}"/>
+    <path refid="library.spigot-1.12.1.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.bluesystem">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.bluesystem">
+    <patternset refid="compiler.excluded"/>
+    <patternset refid="excluded.from.module.bluesystem"/>
+  </patternset>
+  
+  <path id="bluesystem.module.sourcepath">
+    <dirset dir="${module.bluesystem.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.bluesystem" depends="compile.module.bluesystem.production,compile.module.bluesystem.tests" description="Compile module BlueSystem"/>
+  
+  <target name="compile.module.bluesystem.production" depends="register.custom.compilers" description="Compile module BlueSystem; production classes">
+    <mkdir dir="${bluesystem.output.dir}"/>
+    <javac2 destdir="${bluesystem.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.bluesystem}/javac">
+      <compilerarg line="${compiler.args.bluesystem}"/>
+      <bootclasspath refid="bluesystem.module.bootclasspath"/>
+      <classpath refid="bluesystem.module.production.classpath"/>
+      <src refid="bluesystem.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.bluesystem"/>
+    </javac2>
+    
+    <copy todir="${bluesystem.output.dir}">
+      <fileset dir="${module.bluesystem.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+        <patternset refid="excluded.from.compilation.bluesystem"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.bluesystem.tests" depends="register.custom.compilers,compile.module.bluesystem.production" description="compile module BlueSystem; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.bluesystem" description="cleanup module">
+    <delete dir="${bluesystem.output.dir}"/>
+    <delete dir="${bluesystem.testoutput.dir}"/>
+  </target>
+</project>

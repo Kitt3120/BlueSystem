@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="BlueSystem">
+    <output-path>H:/minecraftserver/plugins</output-path>
+    <root id="archive" name="BlueSystem.jar">
+      <element id="module-output" name="BlueSystem" />
+      <element id="file-copy" path="$PROJECT_DIR$/BlueSystem.iml" />
+      <element id="file-copy" path="$PROJECT_DIR$/plugin.yml" />
+    </root>
+  </artifact>
+</component>

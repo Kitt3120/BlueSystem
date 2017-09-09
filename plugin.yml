@@ -1,0 +1,17 @@
+main: de.kitt3120.bluesystem.Core
+name: BlueSystem
+version: 1.0
+author: Kitt3120
+commands:
+  SetPrefix:
+    default: op
+    usage: /SetPrefix <Player> <Prefix>
+    description: Sets the prefix of a player
+  SetSuffix:
+    default: op
+    usage: /SetSuffix <Player> <Suffix>
+    description: Sets the suffix of a player
+  RemoveName:
+    default: op
+    usage: /RemoveName <Player>
+    description: Removes the name changes of a player
